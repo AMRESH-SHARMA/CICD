@@ -30,7 +30,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: cicd:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}-clockbox:latest
 
   deploy_job2:
     needs: build_job1
@@ -44,9 +44,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # last script run image if exist locally otherwise pull image from dockerhub build container from it then run
           script: |
-            sudo docker stop  cicd || true
-            sudo docker rm  -f cicd || true
-            sudo docker rmi -f cicd || true
-            sudo docker run -d --name cicd -p 3000:3000 cicd
-            
-
+            sudo docker stop  amresh1808-clockbox || true
+            sudo docker rm  -f amresh1808-clockbox || true
+            sudo docker rmi -f amresh1808-clockbox || true
+            sudo docker run -d --name amresh1808-clockbox -p 3000:3000 amresh1808-clockbox
