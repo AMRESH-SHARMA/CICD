@@ -1,5 +1,7 @@
+#node block
+
 # Fetching the latest node image on alpine linux
-FROM node:alpine
+FROM node:alpine as nodework
 
 # Setting up the work directory
 WORKDIR /react-app
@@ -15,12 +17,13 @@ RUN npm install
 # Copy the app source code to the container
 COPY . .
 
-# Build the React app for production
-# RUN npm run build
+#Build the React app for production
+RUN npm run build
 
-# Documents that the container will listen on port 8080 for network connections. 
-# It does not publish the port to the host machine. (Expose is optional)
-EXPOSE 3000
 
-# Set the command to run the development server when the container starts
-CMD ["npm", "start"]
+#nginx block
+FROM nginx:1.25.1-alpine
+WORKDIR /usr/share/nginx/html
+RUN rm -rf ./*
+COPY --from=nodework /react-app/build .
+ENTRYPOINT [ "nginx", "-g", "daemon off;"]
