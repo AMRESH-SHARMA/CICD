@@ -30,10 +30,10 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/CICD:latest
 
   deploy_job2:
-    # needs: build_job1
+    needs: build_job1
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to EC2
@@ -42,6 +42,7 @@ jobs:
           host: ${{ secrets.EC2_IP }}
           username: ubuntu
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # last script run image if exist locally otherwise pull image from dockerhub build container from it then run
           script: |
             sudo docker stop  amresh1808/clockbox || true
             sudo docker rm  amresh1808/clockbox || true
