@@ -30,7 +30,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/cicd:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
 
   deploy_job2:
     needs: build_job1
