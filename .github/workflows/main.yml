@@ -45,8 +45,7 @@ jobs:
           # last script run image with custome name my-container if exist locally
           # otherwise pull image from dockerhub repo amresh1808 build container from it then run
           script: |
-            sudo docker stop  amresh1808/clockbox || true
-            sudo docker rm  -f amresh1808/clockbox || true
+            sudo docker stop my-container || true
+            sudo docker rm -f my-container || true
             sudo docker rmi -f amresh1808/clockbox || true
-            # sudo docker run -d --name amresh1808/clockbox -p 3000:3000 amresh1808/clockbox
             sudo docker run -d --name my-container -p 3000:3000 amresh1808/clockbox:latest
