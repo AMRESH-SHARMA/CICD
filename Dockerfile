@@ -1,10 +1,13 @@
 #node block
 
 # Use an Ubuntu-based Node.js image
-FROM node:14 AS nodework
+# FROM node:14 AS nodework
 
-# Fetching the latest node image on alpine linux
+# Use an alpine-linux-based image (optimized v-2)
 # FROM node:alpine as nodework
+
+# Use a Distroless Node.js image (optimized v-3)
+FROM gcr.io/distroless/nodejs:14 AS nodework
 
 # Setting up the work directory
 WORKDIR /react-app
