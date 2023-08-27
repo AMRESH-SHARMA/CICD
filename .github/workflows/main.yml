@@ -48,4 +48,4 @@ jobs:
             sudo docker stop my-container || true
             sudo docker rm -f my-container || true
             sudo docker rmi -f amresh1808/clockbox || true
-            sudo docker run -d --name my-container -p 3000:3000 amresh1808/clockbox:latest
+            sudo docker run -d --name my-container -p 3000:80 amresh1808/clockbox:latest
