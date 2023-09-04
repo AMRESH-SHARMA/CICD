@@ -49,3 +49,4 @@ jobs:
             sudo docker rm -f my-container || true
             sudo docker rmi -f amresh1808/clockbox || true
             sudo docker run --restart=always -d --name my-container -p 3000:80 amresh1808/clockbox:latest
+
