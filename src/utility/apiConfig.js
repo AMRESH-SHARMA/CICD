@@ -8,7 +8,7 @@
 
 export const BASE_URL = 'http://34.31.210.3:8084/api'
 
-export const CURRENT_BASE_URL = 'http://3.110.190.235:3000/'
+export const CURRENT_BASE_URL = 'http://3.110.190.235:3000'
 
 
 
